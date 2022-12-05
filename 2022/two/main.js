@@ -27,15 +27,11 @@ const casesP2 = {
 fs.readFile('input.txt', (err, data) => {
 	if (err) throw err;
 	const rounds = data.toString().split('\n');
-
 	const totalScoreP1 = calcScore(casesP1, rounds);
 	const totalScoreP2 = calcScore(casesP2, rounds);
+	console.log(totalScoreP1);
 	console.log(totalScoreP2);
 });
 
-const calcScore = (cases, rounds) => {
-	return rounds.reduce((total, str) => {
-		const score = cases[str.replace(' ', '')];
-		return total + score;
-	}, 0);
-};
+const calcScore = (cases, rounds) =>
+	rounds.reduce((total, str) => total + cases[str.replace(' ', '')], 0);
